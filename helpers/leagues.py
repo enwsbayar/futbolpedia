@@ -2,6 +2,8 @@ import requests
 import pandas as pd
 import time
 
+#SHEET NAME = COUNTRY CODE
+
 response = requests.post('https://fbrapi.com/generate_api_key')
 api_key = response.json()['api_key']
 headers = {"X-API-Key": api_key}
@@ -16,10 +18,9 @@ with pd.ExcelWriter("./data/leagues.xlsx", engine="xlsxwriter") as writer:
         params = {"country_code": code}
 
         response = requests.get(url, headers=headers, params=params, timeout=30)
-        time.sleep(3)  
+        time.sleep(4)  
 
         data = response.json().get("data", [])
-        print(data)
         flat_list = []
 
         for item in data:

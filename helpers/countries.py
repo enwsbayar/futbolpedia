@@ -19,5 +19,5 @@ df = df.rename(columns={
     "#_players": "players"
 })
 
-df.to_excel("./data/countries.xlsx", index = False)
+df.to_excel("./data/countries.xlsx", sheet_name="countries", index = False)
 
