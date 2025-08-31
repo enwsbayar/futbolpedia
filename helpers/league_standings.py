@@ -5,8 +5,7 @@ import time
 response = requests.post('https://fbrapi.com/generate_api_key')
 api_key = response.json()['api_key']
 headers = {"X-API-Key": api_key}
-url = "https://fbrapi.com/league-standings" \
-""
+url = "https://fbrapi.com/league-standings"
 
 df_league_seasons = pd.read_excel('./data/league_seasons.xlsx')
 
@@ -16,8 +15,6 @@ season_ids = df_league_seasons['season_id'].tolist()
 all_dfs = []
 
 for league_id, season_id in zip(league_ids, season_ids):
-    if int(season_id) < 2018:
-       break
     print(f"Processing league_id={league_id}, season_id={season_id}")
     
     params = {"league_id": int(league_id),
