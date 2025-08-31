@@ -19,7 +19,7 @@ all_dfs = []
 
 for id in u_s_league_ids:
     print(f"Processing league_id = {id}")
-    params = {"league_id": 967}
+    params = {"league_id": {id}}
     response = requests.get(url, headers=headers, params=params, timeout=30)
     time.sleep(6)
 
