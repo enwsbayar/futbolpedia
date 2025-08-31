@@ -1,7 +1,6 @@
 import requests
 import pandas as pd
 import time
-import os
 
 response = requests.post('https://fbrapi.com/generate_api_key')
 api_key = response.json()['api_key']
