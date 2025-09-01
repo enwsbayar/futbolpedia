@@ -12,7 +12,8 @@ response = requests.get(url, headers=headers, timeout=30)
 
 time.sleep(4)
 
-data = response.json()["data"]
+data = response.json()["data"] if response.status_code == 200 else (print(f"Status: {response.status_code}, Response: {response.text}") or None)
+
 df = pd.DataFrame(data)
 df = df.rename(columns={
     "#_clubs": "clubs",

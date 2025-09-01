@@ -22,7 +22,8 @@ for id in u_s_league_ids:
     response = requests.get(url, headers=headers, params=params, timeout=30)
     time.sleep(6)
 
-    data = response.json().get("data", [])
+    data = response.json().get("data") if response.status_code == 200 else (print(f"Status: {response.status_code}, Response: {response.text}") or None)
+
     df = pd.json_normalize(data, sep="_") if data else pd.DataFrame()
     print(data)
 

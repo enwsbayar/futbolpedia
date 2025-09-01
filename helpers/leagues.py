@@ -20,7 +20,8 @@ for code in country_codes:
     response = requests.get(url, headers=headers, params=params, timeout=30)
     time.sleep(6)
 
-    data = response.json().get("data", [])
+    data = response.json().get("data") if response.status_code == 200 else (print(f"Status: {response.status_code}, Response: {response.text}") or None)
+
     flat_list = []
 
     for item in data:
